@@ -15,6 +15,14 @@ Along with the data, we provide official train/test splits, background informati
 <img src="fig-data-visualization.png" alt="Alt text" width="750" height="762" style="display: block; margin-left: auto; margin-right: auto;">
 </center>
 
+**Environment installation:**
+
+```bash
+conda create -n ml4alg sage jupyter multiprocess python=3.11
+conda activate ml4alg
+python -m pip install lightning
+```
+
 ### Open Problem Datasets
 - **Grassmannian cluster algebras:** Identify when a rectangular semistandard Young tableau corresponds to a cluster variable in a cluster algebra associated with a Grassmann manifold.
 - **Kazhdan-Lusztig polynomial coefficients:** Kazhdan-Lusztig polynomials, which are parametrized by two permutations, are known to carry extensive combinatorial information yet in many ways remain mysterious. The goal of this task is to predict the coefficients on these polynomials from the indexing permutations alone.
