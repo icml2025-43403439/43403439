@@ -20,7 +20,7 @@ Along with the data, we provide official train/test splits, background informati
 ```bash
 conda create -n ml4alg sage jupyter multiprocess python=3.11
 conda activate ml4alg
-python -m pip install lightning
+python -m pip install lightning tqdm
 ```
 
 ### Open Problem Datasets

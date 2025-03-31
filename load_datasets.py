@@ -7,6 +7,7 @@ from typing import Optional
 import requests
 from pathlib import Path
 import zipfile
+import shutil
 
 def get_dataset(data: str, n: Optional[int] = None, folder = "./", info_str: bool = False):
     """
@@ -621,13 +622,23 @@ def main():
 
         # Unzip phase: place each dataset into data/dataset_name/
         data_subfolder = Path("data")
+        if dataset_name == "weaving_patterns":
+            data_subfolder = data_subfolder / "weaving_patterns"
         data_subfolder.mkdir(parents=True, exist_ok=True)
         print(f"Unzipping {filename} into {data_subfolder}...")
 
         try:
             with zipfile.ZipFile(zip_destination, 'r') as zip_ref:
                 zip_ref.extractall(data_subfolder)
-            print(f"Extraction complete for {dataset_name}.\n")
+            print(f"Extraction complete for {dataset_name}.")
+            
+            # Remove __MACOSX directories
+            macosx_dirs = list(Path(data_subfolder).glob('**/__MACOSX'))
+            for macosx_dir in macosx_dirs:
+                print(f"Removing macOS metadata directory: {macosx_dir}")
+                shutil.rmtree(macosx_dir)
+            
+            print(f"Cleanup complete for {dataset_name}.\n")
         except zipfile.BadZipFile:
             print(f"[ERROR] {filename} is not a valid zip file - you will need to download the data manually.\n")
 
