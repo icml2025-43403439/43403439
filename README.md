@@ -22,6 +22,13 @@ conda create -n ml4alg sage jupyter multiprocess python=3.11
 conda activate ml4alg
 python -m pip install lightning tqdm
 ```
+### Downloading the datasets
+
+To download the data into a folder called `data` run:
+```bash
+python load_datasets.py
+``` 
+Note however that the datasets for KL polynomials, RSK, and Schubert polynomials are too large to download programmatically via the Google Drive API and have to be downloaded manually. See their respective README files for more details.
 
 ### Open Problem Datasets
 - **Grassmannian cluster algebras:** Identify when a rectangular semistandard Young tableau corresponds to a cluster variable in a cluster algebra associated with a Grassmann manifold.
