@@ -272,7 +272,7 @@ def get_dataset(data: str, n: Optional[int] = None, folder = "./", info_str: boo
             return (np.array(X_train.reshape(X_train.shape[0], -1)), np.array(y_train), np.array(X_test.reshape(X_test.shape[0], -1)), np.array(y_test), input_size, output_size, num_tokens)
 
     elif data == "kl_polynomial":
-        assert n in {4, 5, 6, 7, 8}, f"Can't handle n={n}. n must be 8, 9, or 10."
+        assert n in {5, 6, 7, 8}, f"Can't handle n={n}. n must be 5, 6, 7, or 8."
 
         path_to_files = os.path.join(folder, "kl-polynomials/")
         train_data, test_data = load_kl_polynomial_data(path_to_files, n)
@@ -450,37 +450,33 @@ def load_quiver_data(path_to_files):
 
 
 def load_kl_polynomial_data(path_to_files,size):
-
     # Names of data files
-
-    file_names = {4:['kl_polynomials_4_train.txt','kl_polynomials_4_test.txt'],
-                  5:['kl_polynomials_5_train.txt','kl_polynomials_5_test.txt'],
-                  6:['kl_polynomials_6_train.txt','kl_polynomials_6_test.txt'],
-                  7:['kl_polynomials_7_train.txt','kl_polynomials_7_test.txt']}
+    file_names = {5:['kl-polynomials_5_train.txt','kl-polynomials_5_test.txt'],
+                  6:['kl-polynomials_6_train.txt','kl-polynomials_6_test.txt'],
+                  7:['kl-polynomials_7_train.txt','kl-polynomials_7_test.txt']}
 
     # Lists to store train and test as tuples
     train_data = []
     test_data = []
 
     # Load valid train Young diagrams
-
-  #  print(file_names[size])
+    #  print(file_names[size])
 
     for k,t in enumerate(file_names[size]):
-
         file = open(path_to_files+t, "r")
         while True:
             content=file.readline()
+            if content=="\n":
+                continue
             if not content:
                 break
-            content = content.split(",")
+            content = content.split(" ")
             perm1 = list(content[0])
-            perm2 = list(content[1])[1:]
-            coeffs = content[2:]
-            coeffs[-1] = coeffs[-1][:-1]
+            perm2 = list(content[1])
+            coeffs = content[2]
             perm1 = [int(i) for i in perm1]
             perm2 = [int(i) for i in perm2]
-            coeffs = [int(i) for i in coeffs]
+            coeffs = [int(i) for i in coeffs.split(",")]
             datum = [perm1,perm2,coeffs]
             if k == 0:
                 train_data.append(datum)
