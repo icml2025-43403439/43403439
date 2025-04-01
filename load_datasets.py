@@ -15,12 +15,12 @@ def get_dataset(data: str, n: Optional[int] = None, folder = "./", info_str: boo
     ----------
     data (str): Must be either "weaving", "rsk", "schubert", "quiver", "mheight", "symmetric_group_char", "grassmannian_cluster_algebras", "kl_polynomial", or "lattice_path"
     n (int): 
-        - n = 6, 7, or 8 for "weaving"
+        - n = 6 or 7 for "weaving"
         - n = 8, 9, or 10 for "rsk"
         - n = 3, 4, 5, or 6 for "schubert"
-        - n = 10, 11, or 12 for "mheight"
-        - n = 18, 20, 22 for "symmetric_group_char"
-        - n = 5,6,7 for "kl_polynomial"
+        - n = 8, 9, or 10 for "mheight"
+        - n = 18, 20, or 22 for "symmetric_group_char"
+        - n = 5, 6, or 7 for "kl_polynomial"
         - n = 10, 11, 12, or 13 for "lattice_path"
         - There are not multiple values of n for the "quiver" and "grassmannian_cluster_algebras" datasetes
     folder (str, optional): Base directory for dataset files. Defaults to "./".
@@ -37,11 +37,11 @@ def get_dataset(data: str, n: Optional[int] = None, folder = "./", info_str: boo
 
         X_train = [
             ast.literal_eval(line)
-            for line in open( os.path.join(folder, f"weaving_patterns/weaving_pattern_train_{n}.txt"), 'r')
+            for line in open( os.path.join(folder, f"weaving_patterns/weaving_patterns_train_{n}.txt"), 'r')
         ]
         X_test = [
             ast.literal_eval(line)
-            for line in open( os.path.join(folder, f"weaving_patterns/weaving_pattern_test_{n}.txt"), 'r')
+            for line in open( os.path.join(folder, f"weaving_patterns/weaving_patterns_test_{n}.txt"), 'r')
         ]
         y_train = [ast.literal_eval(line) for line in open( os.path.join(folder, f"weaving_patterns/labels_train_{n}.txt"), 'r')
                 ]

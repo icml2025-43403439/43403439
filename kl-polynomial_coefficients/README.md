@@ -19,12 +19,12 @@ Each instance in this dataset consists of a pair of permutations of $n$, $x$ and
 Note that coefficients are listed by increasing degree of the power of $q$ (e.g., the coefficient on $1$ comes first, then the coefficient on $q$, then the coefficient on $q^2$, etc.)
 
 The files we provide are: 
-- ``kl_polynomials_5_train.txt``
-- ``kl_polynomials_5_test.txt``
-- ``kl_polynomials_6_train.txt``
-- ``kl_polynomials_6_test.txt``
-- ``kl_polynomials_7_train.txt``
-- ``kl_polynomials_7_test.txt``
+- ``kl-polynomials_5_train.txt``
+- ``kl-polynomials_5_test.txt``
+- ``kl-polynomials_6_train.txt``
+- ``kl-polynomials_6_test.txt``
+- ``kl-polynomials_7_train.txt``
+- ``kl-polynomials_7_test.txt``
 
 The datasets can be loaded by: (1) unzipping the file found [here](https://drive.google.com/file/d/1ttnmswoXhcd4Ej-RVR1K9aR7ih27Usx2/view?usp=sharing) in your chosen `directory`, (2) choosing a value for $n$ (5, 6, or 7), and then (3) running the following commands (here we choose $n = 6$)
 
@@ -33,7 +33,7 @@ import numpy as np
 import load_datasets 
 
 folder = # provide the file path to the directory you chose here
-X = load_datasets.get_dataset('schubert', n=6, folder = folder)
+X = load_datasets.get_dataset('kl_polynomial', n=6, folder = folder)
 ```
 
 The basic statistics of the datasets are as follows
