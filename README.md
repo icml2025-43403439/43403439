@@ -24,6 +24,16 @@ python -m pip install lightning tqdm
 ```
 ### Downloading the datasets
 
+You have two options for downloading the datasets.
+
+1. Manually via a Google Drive link
+The datasets can be downloaded here: [https://drive.google.com/file/d/1eWcXsNPAsCJMsVqcoYscUUz9S0-wjKnY/view?usp=sharing](https://drive.google.com/file/d/1A5DlXHj81c5JlgpuCoS5FtMahbSHAyyj/view).
+After downloading the file, unzip it into a folder called `data` (assuming you have put the downloaded zip file in the same directory as this README):
+```bash
+unzip all_data.zip -d data
+```
+
+2. Programmatically via the Google Drive API (grabs 6/9 datasets)
 To download the data into a folder called `data` run:
 ```bash
 python load_datasets.py

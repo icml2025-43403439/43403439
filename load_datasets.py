@@ -636,7 +636,7 @@ def main():
             
             print(f"Cleanup complete for {dataset_name}.\n")
         except zipfile.BadZipFile:
-            print(f"[ERROR] {filename} is not a valid zip file - you will need to download the data manually.\n")
+            print(f"[ERROR] {filename} is not a valid zip file - you will need to download the data manually via this link: https://docs.google.com/uc?export=download&id={file_id}.\n")
 
 if __name__ == "__main__":
     main()
